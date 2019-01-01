@@ -24,25 +24,29 @@ namespace Cederfelt.se
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+
+
             }
 
             //app.Use(async (ctx, next) =>
             //{
-            //    ctx.Response.Headers.Add("Content-Security-Policy",
+            //    ctx.Response.Headers.Add("Content-Security-Policy-Report-Only",
             //        "default-src 'self'");
             //    await next();
             //});
 
-            //app.Use(async (ctx, next) =>
-            //{
-            //    ctx.Response.Headers.Add("Access-Control-Allow-Origin", "*");
-            //    ctx.Response.Headers.Add("Access-Control-Allow-Methods", "GET,PUT,POST,OPTIONS");
-            //    ctx.Response.Headers.Add("Access-Control-Request-Headers", "*");
+            //< add name = "Content-Security-Policy-Report-Only" value = "default-src 'self'" />
 
-            //    await next();
-            //});
+               //app.Use(async (ctx, next) =>
+               //{
+               //    ctx.Response.Headers.Add("Access-Control-Allow-Origin", "*");
+               //    ctx.Response.Headers.Add("Access-Control-Allow-Methods", "GET,PUT,POST,OPTIONS");
+               //    ctx.Response.Headers.Add("Access-Control-Request-Headers", "*");
 
-            app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader().AllowCredentials());
+               //    await next();
+               //});
+
+               app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader().AllowCredentials());
             
             app.UseDefaultFiles();
             app.UseStaticFiles();

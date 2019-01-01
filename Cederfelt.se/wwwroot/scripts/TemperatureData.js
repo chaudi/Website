@@ -1,1 +1,1 @@
-//# sourceMappingURL=TemperatureData.js.map
+//# sourceMappingURL=temperatureData.js.map

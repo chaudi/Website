@@ -1,4 +1,3 @@
-//Person is now string
 function Welcome(person) {
     return "Hello, " + person;
 }

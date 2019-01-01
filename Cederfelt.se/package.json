@@ -9,5 +9,8 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {}
+  "dependencies": {
+    "@types/chart.js": "^2.7.42",
+    "chart.js": "^2.7.3"
+  }
 }

@@ -1,4 +1,4 @@
-﻿interface ITemperatureData{
-    temperature : Number;
+﻿export interface ITemperatureData{
+    temperature : number;
     timeStamp : Date;
 }

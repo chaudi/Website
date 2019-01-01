@@ -18,7 +18,11 @@ namespace Cederfelt.se.API.Controllers
             return new List<TemperatureData>
             {
                 new TemperatureData{Temperature = 24.5233,TimeStamp = DateTime.UtcNow.AddMinutes(-1)},
-                new TemperatureData{Temperature = 24.5233,TimeStamp = DateTime.UtcNow}
+                new TemperatureData{Temperature = 24.8,TimeStamp = DateTime.UtcNow.AddMinutes(-2)},
+                new TemperatureData{Temperature = 22.8,TimeStamp = DateTime.UtcNow.AddMinutes(-3)},
+                new TemperatureData{Temperature = 25.8,TimeStamp = DateTime.UtcNow.AddMinutes(-4)},
+                new TemperatureData{Temperature = 23.8,TimeStamp = DateTime.UtcNow.AddMinutes(-5)},
+
             };
         }
 

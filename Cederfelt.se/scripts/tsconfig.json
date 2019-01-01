@@ -2,9 +2,15 @@
   "compilerOptions": {
     "noImplicitAny": false,
     "noEmitOnError": true,
-    "removeComments": false,
+    "removeComments": true,
+
     "sourceMap": true,
-    "target": "ES2017",
+    "target": "es6",
+    "module": "es6",
     "outDir": "../wwwroot/scripts"
-  }
+
+   // "lib": ["es2015"]
+
+  },
+  "compileOnSave": false
 }
