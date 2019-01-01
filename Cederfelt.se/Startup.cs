@@ -15,6 +15,7 @@ namespace Cederfelt.se
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -24,14 +25,32 @@ namespace Cederfelt.se
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            //app.Use(async (ctx, next) =>
+            //{
+            //    ctx.Response.Headers.Add("Content-Security-Policy",
+            //        "default-src 'self'");
+            //    await next();
+            //});
+
+            //app.Use(async (ctx, next) =>
+            //{
+            //    ctx.Response.Headers.Add("Access-Control-Allow-Origin", "*");
+            //    ctx.Response.Headers.Add("Access-Control-Allow-Methods", "GET,PUT,POST,OPTIONS");
+            //    ctx.Response.Headers.Add("Access-Control-Request-Headers", "*");
+
+            //    await next();
+            //});
+
+            app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader().AllowCredentials());
             
             app.UseDefaultFiles();
             app.UseStaticFiles();
 
-            app.Run(async (context) =>
-            {
-                await context.Response.WriteAsync("Hello World!");
-            });
+            //app.Run(async (context) =>
+            //{
+            //    await context.Response.WriteAsync("Hello World!");
+            //});
         }
     }
 }

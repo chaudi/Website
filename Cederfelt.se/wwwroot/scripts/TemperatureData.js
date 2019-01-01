@@ -1,0 +1,1 @@
+//# sourceMappingURL=TemperatureData.js.map

@@ -9,6 +9,9 @@
   <ItemGroup>
     <None Remove=".gitignore" />
     <None Remove="scripts\app.ts" />
+    <None Remove="scripts\server.ts" />
+    <None Remove="scripts\temperature.ts" />
+    <None Remove="scripts\TemperatureData.ts" />
   </ItemGroup>
 
   <ItemGroup>
@@ -18,6 +21,9 @@
 
   <ItemGroup>
     <TypeScriptCompile Include="scripts\app.ts" />
+    <TypeScriptCompile Include="scripts\server.ts" />
+    <TypeScriptCompile Include="scripts\temperature.ts" />
+    <TypeScriptCompile Include="scripts\temperatureData.ts" />
   </ItemGroup>
 
 </Project>
