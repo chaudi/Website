@@ -7,6 +7,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cederfelt.se.API", "Cederfe
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cederfelt.se", "Cederfelt.se\Cederfelt.se.csproj", "{9298B91D-67A4-4ED7-933C-C7B0DE5027EB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cederfelt.se.BL", "Cederfelt.se.BL\Cederfelt.se.BL.csproj", "{B5F6AD34-6EB3-40CB-8CA3-DBC049AB883C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cederfelt.se.DataAccess", "Cederfelt.se.DataAccess\Cederfelt.se.DataAccess.csproj", "{48DB13DB-291C-4AD8-932A-C84E6E5E9AE0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{9298B91D-67A4-4ED7-933C-C7B0DE5027EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9298B91D-67A4-4ED7-933C-C7B0DE5027EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9298B91D-67A4-4ED7-933C-C7B0DE5027EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5F6AD34-6EB3-40CB-8CA3-DBC049AB883C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5F6AD34-6EB3-40CB-8CA3-DBC049AB883C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5F6AD34-6EB3-40CB-8CA3-DBC049AB883C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5F6AD34-6EB3-40CB-8CA3-DBC049AB883C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{48DB13DB-291C-4AD8-932A-C84E6E5E9AE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48DB13DB-291C-4AD8-932A-C84E6E5E9AE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48DB13DB-291C-4AD8-932A-C84E6E5E9AE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48DB13DB-291C-4AD8-932A-C84E6E5E9AE0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
