@@ -17,6 +17,10 @@ namespace Cederfelt.se
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddCors();
+            services.AddSpaStaticFiles(c =>
+            {
+                c.RootPath = "cederfelt-app";
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -25,13 +29,26 @@ namespace Cederfelt.se
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-
             }
+            else
+            {
+                app.UseExceptionHandler("/Error");
+                app.UseHsts();
+            }
+
+           // app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader().AllowCredentials());
+
+            app.UseDefaultFiles();
+            app.UseStaticFiles();
+            app.UseSpaStaticFiles();
 
             app.UseSpa(spa =>
             {
                 spa.Options.SourcePath = "cederfelt-app";
-
+                //if (env.IsDevelopment())
+                //{
+                //    spa.UseAngularCliServer(npmScript: "start");
+                //}
                 //SSR server side rendering
                 //x.UseSpaPrerendering(options =>
                 //{
@@ -64,11 +81,6 @@ namespace Cederfelt.se
 
             //    await next();
             //});
-
-            app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader().AllowCredentials());
-
-            app.UseDefaultFiles();
-            app.UseStaticFiles();
 
             //app.Run(async (context) =>
             //{
