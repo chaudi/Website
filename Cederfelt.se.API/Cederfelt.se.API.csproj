@@ -11,4 +11,9 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Cederfelt.se.BL\Cederfelt.se.BL.csproj" />
+    <ProjectReference Include="..\Cederfelt.se.DataAccess\Cederfelt.se.DataAccess.csproj" />
+  </ItemGroup>
+
 </Project>

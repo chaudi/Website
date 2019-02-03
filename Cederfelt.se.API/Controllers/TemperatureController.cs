@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+using Cederfelt.se.BL;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Cederfelt.se.API.Controllers
@@ -11,19 +10,18 @@ namespace Cederfelt.se.API.Controllers
     [ApiController]
     public class TemperatureController : ControllerBase
     {
+        private IGetLatestTemperatureMeasurementsCommand _getLatestCommand;
+
+        public TemperatureController(IGetLatestTemperatureMeasurementsCommand command)
+        {
+            _getLatestCommand = command;
+        }
+
         // GET: api/Temperature
         [HttpGet]
-        public IEnumerable<TemperatureData> Get()
+        public async Task<IEnumerable<TemperatureMeasurement>> Get()
         {
-            return new List<TemperatureData>
-            {
-                new TemperatureData{Degrees = 24.5233,TimeStamp = DateTime.UtcNow.AddMinutes(-1)},
-                new TemperatureData{Degrees = 24.8,TimeStamp = DateTime.UtcNow.AddMinutes(-2)},
-                new TemperatureData{Degrees = 22.8,TimeStamp = DateTime.UtcNow.AddMinutes(-3)},
-                new TemperatureData{Degrees = 25.8,TimeStamp = DateTime.UtcNow.AddMinutes(-4)},
-                new TemperatureData{Degrees = 23.8,TimeStamp = DateTime.UtcNow.AddMinutes(-5)},
-
-            };
+            return await _getLatestCommand.ExecuteAsync();
         }
 
         // GET: api/Temperature/5
@@ -35,8 +33,9 @@ namespace Cederfelt.se.API.Controllers
 
         // POST: api/Temperature
         [HttpPost]
-        public void Post([FromBody] string value)
+        public void Post([FromBody] TemperatureMeasurement value)
         {
+
         }
 
         // PUT: api/Temperature/5

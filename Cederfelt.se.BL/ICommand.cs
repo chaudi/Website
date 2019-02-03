@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Cederfelt.se.DataAccess
+namespace Cederfelt.se.BL
 {
-    public class TemperaturePersister
+    public interface ICommand
     {
     }
 }

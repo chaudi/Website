@@ -4,4 +4,8 @@
     <TargetFramework>netcoreapp2.2</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Cederfelt.se.DataAccess\Cederfelt.se.DataAccess.csproj" />
+  </ItemGroup>
+
 </Project>

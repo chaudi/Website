@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Cederfelt.se.DataAccess;
+using Cederfelt.se.BL;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 
 namespace Cederfelt.se.API
 {
@@ -25,6 +21,14 @@ namespace Cederfelt.se.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<TemperatureContext>(options =>
+            {
+                options.UseInMemoryDatabase("memoryDatabase");
+            });
+
+            services.AddScoped<ITemperatureRepository, TemperatureRepository>();
+            services.AddScoped<IGetLatestTemperatureMeasurementsCommand, GetLatestTemperatureMeasurementsCommand>();
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddCors();
         }
