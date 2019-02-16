@@ -2,19 +2,23 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Cederfelt.se.BL;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Cederfelt.se.API.Controllers
 {
     [Route("api/v1/[controller]")]
     [ApiController]
+    [Authorize]
     public class TemperatureController : ControllerBase
     {
         private IGetLatestTemperatureMeasurementsCommand _getLatestCommand;
+        private IAddMeasurementCommand _addMeasurementCommand;
 
-        public TemperatureController(IGetLatestTemperatureMeasurementsCommand command)
+        public TemperatureController(IGetLatestTemperatureMeasurementsCommand command,IAddMeasurementCommand addMeasurementCommand)
         {
             _getLatestCommand = command;
+            _addMeasurementCommand = addMeasurementCommand;
         }
 
         // GET: api/Temperature
@@ -33,9 +37,9 @@ namespace Cederfelt.se.API.Controllers
 
         // POST: api/Temperature
         [HttpPost]
-        public void Post([FromBody] TemperatureMeasurement value)
+        public async Task Post([FromBody] TemperatureMeasurement value)
         {
-
+            await _addMeasurementCommand.ExecuteAsync(value);
         }
 
         // PUT: api/Temperature/5

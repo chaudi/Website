@@ -31,7 +31,18 @@ namespace Cederfelt.se.DataAccess
             return await _context.Temperatures.OrderByDescending(x => x.TimeStamp).Take(number).ToListAsync();
         }
 
-        public async Task InsertTemperatureAsync(Temperature temperature)
+        public async Task<long> GetCountAsync()
+        {
+            return await _context.Temperatures.CountAsync();
+        }
+
+        public async Task DeleteOldest(int numberOfItems)
+        {
+            var entitiesToDelete = await _context.Temperatures.Take(numberOfItems).ToListAsync();
+            _context.RemoveRange(entitiesToDelete);
+        }
+
+        public async Task AddTemperatureAsync(Temperature temperature)
         {
             await _context.Temperatures.AddAsync(temperature);
         }

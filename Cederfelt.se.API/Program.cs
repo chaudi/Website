@@ -18,7 +18,7 @@ namespace Cederfelt.se.API
         }
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-            WebHost.CreateDefaultBuilder(args)
+            WebHost.CreateDefaultBuilder(args).
                 .UseStartup<Startup>();
     }
 }

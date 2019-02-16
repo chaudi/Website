@@ -13,7 +13,9 @@ namespace Cederfelt.se.DataAccess
 
         Task<IEnumerable<Temperature>> GetNumberOfMeasurementsAsync(int number);
 
-        Task InsertTemperatureAsync(Temperature temperature);
+        Task AddTemperatureAsync(Temperature temperature);
+        Task<long> GetCountAsync();
+        Task DeleteOldest(int numberOfItems);
 
         Task SaveAsync();
     }
