@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using System.IO;
 
 namespace Cederfelt.se.API
 {
@@ -22,6 +23,11 @@ namespace Cederfelt.se.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            IConfigurationBuilder configBuilder = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("appsettings.json");
+            IConfiguration config = configBuilder.Build();
+
+            services.AddSingleton<IConfiguration>(config);
+
             services.AddDbContext<TemperatureContext>(options =>
             {
                 options.UseInMemoryDatabase("memoryDatabase");
@@ -29,6 +35,7 @@ namespace Cederfelt.se.API
 
             services.AddScoped<ITemperatureRepository, TemperatureRepository>();
             services.AddScoped<IGetLatestTemperatureMeasurementsCommand, GetLatestTemperatureMeasurementsCommand>();
+            services.AddScoped<IAddMeasurementCommand, AddMeasurementCommand>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddCors();
@@ -50,6 +57,8 @@ namespace Cederfelt.se.API
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
+            app.UseAuthentication();
             app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader().AllowCredentials());
 
             app.UseHttpsRedirection();

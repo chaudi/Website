@@ -15,7 +15,7 @@ namespace Cederfelt.se.API.Controllers
         private IGetLatestTemperatureMeasurementsCommand _getLatestCommand;
         private IAddMeasurementCommand _addMeasurementCommand;
 
-        public TemperatureController(IGetLatestTemperatureMeasurementsCommand command,IAddMeasurementCommand addMeasurementCommand)
+        public TemperatureController(IGetLatestTemperatureMeasurementsCommand command, IAddMeasurementCommand addMeasurementCommand)
         {
             _getLatestCommand = command;
             _addMeasurementCommand = addMeasurementCommand;
@@ -30,9 +30,15 @@ namespace Cederfelt.se.API.Controllers
 
         // GET: api/Temperature/5
         [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
+        public async Task<TemperatureMeasurement> Get(int id)
         {
-            return "value";
+            return new TemperatureMeasurement
+            {
+                TimeStamp = DateTime.UtcNow,
+                Degrees = 12.23,
+                Humidity = 123.23,
+                Id = 1
+            };
         }
 
         // POST: api/Temperature
