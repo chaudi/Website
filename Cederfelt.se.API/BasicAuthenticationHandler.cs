@@ -55,8 +55,9 @@ namespace Cederfelt.se.API
 
                 return AuthenticateResult.Fail("Invalid Auth");
             }
-            catch
+            catch (Exception e)
             {
+                Logger.LogError(new EventId(1, ""), e, "Exception in AuthenticationHandler");
                 return AuthenticateResult.Fail("Invalid Authorization Header");
             }
         }

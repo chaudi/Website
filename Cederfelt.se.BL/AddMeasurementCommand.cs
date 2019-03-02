@@ -30,7 +30,8 @@ namespace Cederfelt.se.BL
             return new Temperature
             {
                 Measurement = tm.Degrees,
-                TimeStamp = tm.TimeStamp
+                TimeStamp = tm.TimeStamp,
+                Humidity = tm.Humidity,
             };
         }
     }

@@ -18,8 +18,8 @@ namespace Cederfelt.se.BL
         public async Task<IEnumerable<TemperatureMeasurement>> ExecuteAsync()
         {
             var tm = await _repository.GetNumberOfMeasurementsAsync(30);
-            
-            return tm.Select(x=>Convert(x));
+
+            return tm.Select(x => Convert(x));
         }
 
         private TemperatureMeasurement Convert(Temperature temp)
@@ -27,7 +27,7 @@ namespace Cederfelt.se.BL
             return new TemperatureMeasurement
             {
                 Degrees = temp.Measurement,
-                Humidity = 0,
+                Humidity = temp.Humidity,
                 Id = temp.TemperatureId,
                 TimeStamp = temp.TimeStamp
             };
